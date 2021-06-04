@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace PizzaPlace.Models
 {
-    public class ICategoryInterface
+    public interface ICategoryRepository
     {
         IEnumerable<Category> AllCategories { get; }
     }

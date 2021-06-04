@@ -31,5 +31,7 @@ namespace PizzaPlace.Models
 
         public Category Category { get; set; }
 
+        public string Notes { get; set; }
+
     }
 }

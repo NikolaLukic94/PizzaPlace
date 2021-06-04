@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro">
+    <link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <script src="~/lib/jquery/jquery.js"></script>
+    <script src="~/lib/bootstrap/js/bootstrap.js"></script>
+    <link href="~/Content/site.css" rel="stylesheet" />
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"></script>
+</head>
+<body>
+
+    <div class="container">
+
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">WebSiteName</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a asp-controller="Pizza" asp-action="List">Pizzas</a></li>
+                    <li><a asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li><a href="#">Page 3</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="row">
+            <div class="col-md-3">
+                <p class="lead">
+                    <img class="img-responsive" alt="Bethany's Pie Shop'" src="~/Images/bethanylogo.png" />
+                </p>
+            </div>
+            <div class="col-md-9">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+</body>
+</html>

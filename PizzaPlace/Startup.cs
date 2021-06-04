@@ -1,9 +1,11 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using PizzaPlace.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +25,15 @@ namespace PizzaPlace
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<AppDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddScoped<IPizzaRepository, PizzaRepository>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
+
+            // services.AddTransient
+            // services.AddSingleton()
+
             services.AddRazorPages();
         }
 
@@ -49,7 +60,9 @@ namespace PizzaPlace
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapRazorPages();
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
