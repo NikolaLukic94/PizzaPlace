@@ -17,6 +17,7 @@ namespace PizzaPlace.Models
 
         public DbSet<Category> Categories { get; set; }
 
+        public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
         // seed data if no data in db
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

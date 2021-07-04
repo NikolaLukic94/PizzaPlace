@@ -30,6 +30,11 @@ namespace PizzaPlace
 
             services.AddScoped<IPizzaRepository, PizzaRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
+            // !! When user get to the site, we're creating a scoped shoppinng cart using the GetCart method
+            services.AddScoped<ShoppingCart>(sp => ShoppingCart.GetCart(sp));
+            services.AddHttpContextAccessor();
+            // this also requires to bring in the middleware in order to support this
+            services.AddSession();
 
             // services.AddTransient
             // services.AddSingleton()
@@ -53,6 +58,9 @@ namespace PizzaPlace
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+
+            // Support for session
+            app.UseSession();
 
             app.UseRouting();
 

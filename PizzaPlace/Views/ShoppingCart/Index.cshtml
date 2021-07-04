@@ -1,0 +1,13 @@
+﻿@model ShoppingCartViewModel
+
+<h1>Your shopping cart</h1>
+
+<hr />
+
+@foreach (var line in Model.ShoppingCart.ShoppingCartItems)
+{
+    <p> @line.Amount </p>
+    <p> @line.Pizza.Name </p>
+    <p> @line.Pizza.Price.ToString("c") </p>
+    <p> @((line.Amount * line.Pizza.Price).ToString()) </p>
+}
